@@ -1,0 +1,6 @@
+/.deta/
+/.env
+/.env.deta
+/pyproject.toml
+/poetry.lock
+.idea
