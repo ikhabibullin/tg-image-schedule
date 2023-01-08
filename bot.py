@@ -4,7 +4,7 @@ from io import BytesIO
 
 from aiogram import Dispatcher, Bot, types
 from aiogram.utils import executor
-from configs import TOKEN, ENV, ALLOW_IDS
+from configs import TOKEN, ENV
 from logic import save_photo, save_chat_id
 
 bot = Bot(token=TOKEN)
@@ -18,11 +18,6 @@ async def start(message: types.Message):
     await message.answer('Hello it\'s bot for sending images by schedule')
 
 
-@dp.message_handler(commands='chat')
-async def get_chat_id(message: types.Message):
-    await message.answer(message.chat.id)
-
-
 @dp.channel_post_handler(text='/chain')
 async def channel_chain(message: types.Message):
     await save_chat_id(str(message.chat.id))
@@ -32,8 +27,6 @@ async def channel_chain(message: types.Message):
 
 @dp.message_handler(content_types=['photo'])
 async def send_photo(message):
-    if message.chat.id not in ALLOW_IDS:
-        return
     file_name = str(uuid.uuid4())
     image = BytesIO()
     photo = await message.photo[-1].download(destination_file=image)
