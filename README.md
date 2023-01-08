@@ -1,6 +1,7 @@
 # Telegram bot for sending images to channel by schedule
 
-## - Working on Deta(like Heroku)
+## - Working on Deta(like Heroku and free)
+## - stack: fastapi, aiogram
 
 ## - Workflow
 ### 1. Add bot to channel like admin
