@@ -36,7 +36,7 @@ async def on_startup():
 
 
 async def get_app():
-    _app = App(FastAPI())
+    _app = App(FastAPI(docs_url=None, redoc_url=None))
     await on_startup()
     return _app
 
